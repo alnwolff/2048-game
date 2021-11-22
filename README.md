@@ -1,2 +1,2 @@
-# 2084-game
+# 2048-game
 React practice

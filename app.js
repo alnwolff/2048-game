@@ -149,6 +149,7 @@ document.addEventListener("DOMContentLoaded", () => {
         squares[i + 1].innerHTML = 0;
       }
     }
+    checkForWin()
   }
 
   function combineColumn() {
@@ -161,6 +162,7 @@ document.addEventListener("DOMContentLoaded", () => {
         squares[i + width].innerHTML = 0;
       }
     }
+    checkForWin()
   }
 
   //assign keycodes
@@ -205,5 +207,16 @@ document.addEventListener("DOMContentLoaded", () => {
     combineColumn();
     moveUp();
     generate();
+  }
+
+  //check for the number 2048 in the squares to win
+
+  function checkForWin() {
+      for (let i=0; i < squares.length; i++) {
+          if (squares[i].innerHTML == 2048) {
+              resultDisplay.innerHTML = 'You Win!'
+              document.removeEventListener('keyup', control)
+          }
+      }
   }
 });
