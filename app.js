@@ -85,5 +85,15 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // combine numbers
+  
+  function combineRow() {
+      for (let i = 0; i < 15; i++) {
+          if (squares[i].innerHTML === squares[i+1].innerHTML) {
+              let combinedTotal = parseInt(squares[i].innerHTML) + parseInt(squares[i+1].innerHTML)
+              squares[i].innerHTML = combinedTotal
+              squares[i+1].innerHTML = 0
+          }
+      }
+  }
 
 });
