@@ -24,6 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
     randomNumber = Math.floor(Math.random() * squares.length);
     if (squares[randomNumber].innerHTML == 0) {
       squares[randomNumber].innerHTML = 2;
+      checkForGameOver();
     } else generate();
   }
 
@@ -149,7 +150,7 @@ document.addEventListener("DOMContentLoaded", () => {
         squares[i + 1].innerHTML = 0;
       }
     }
-    checkForWin()
+    checkForWin();
   }
 
   function combineColumn() {
@@ -162,7 +163,7 @@ document.addEventListener("DOMContentLoaded", () => {
         squares[i + width].innerHTML = 0;
       }
     }
-    checkForWin()
+    checkForWin();
   }
 
   //assign keycodes
@@ -212,11 +213,25 @@ document.addEventListener("DOMContentLoaded", () => {
   //check for the number 2048 in the squares to win
 
   function checkForWin() {
-      for (let i=0; i < squares.length; i++) {
-          if (squares[i].innerHTML == 2048) {
-              resultDisplay.innerHTML = 'You Win!'
-              document.removeEventListener('keyup', control)
-          }
+    for (let i = 0; i < squares.length; i++) {
+      if (squares[i].innerHTML == 2048) {
+        resultDisplay.innerHTML = "You Win!";
+        document.removeEventListener("keyup", control);
       }
+    }
+  }
+
+  // check if there
+  function checkForGameOver() {
+    let zeros = 0;
+    for (let i = 0; i < squares.length; i++) {
+      if (squares[i].innerHTML == 0) {
+        zeros++;
+      }
+    }
+    if (zeros === 0) {
+      resultDisplay.innerHTML = "Game Over!";
+      document.removeEventListener("keyup", control);
+    }
   }
 });
