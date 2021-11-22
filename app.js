@@ -155,7 +155,8 @@ document.addEventListener("DOMContentLoaded", () => {
     for (let i = 0; i < 12; i++) {
       if (squares[i].innerHTML === squares[i + width].innerHTML) {
         let combinedTotal =
-          parseInt(squares[i].innerHTML) + parseInt(squares[i + width].innerHTML);
+          parseInt(squares[i].innerHTML) +
+          parseInt(squares[i + width].innerHTML);
         squares[i].innerHTML = combinedTotal;
         squares[i + width].innerHTML = 0;
       }
@@ -169,6 +170,10 @@ document.addEventListener("DOMContentLoaded", () => {
       keyRight();
     } else if (e.keyCode === 37) {
       keyLeft();
+    } else if (e.keyCode === 38) {
+      keyUp();
+    } else if (e.keyCode === 40) {
+      keyDown();
     }
   }
 
@@ -185,6 +190,20 @@ document.addEventListener("DOMContentLoaded", () => {
     moveLeft();
     combineRow();
     moveLeft();
+    generate();
+  }
+
+  function keyDown() {
+    moveDown();
+    combineColumn();
+    moveDown();
+    generate();
+  }
+
+  function keyUp() {
+    moveUp();
+    combineColumn();
+    moveUp();
     generate();
   }
 });
