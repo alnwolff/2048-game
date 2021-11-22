@@ -151,6 +151,17 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
+  function combineColumn() {
+    for (let i = 0; i < 12; i++) {
+      if (squares[i].innerHTML === squares[i + width].innerHTML) {
+        let combinedTotal =
+          parseInt(squares[i].innerHTML) + parseInt(squares[i + width].innerHTML);
+        squares[i].innerHTML = combinedTotal;
+        squares[i + width].innerHTML = 0;
+      }
+    }
+  }
+
   //assign keycodes
 
   function control(e) {
